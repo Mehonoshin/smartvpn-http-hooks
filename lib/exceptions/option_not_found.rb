@@ -1,0 +1,2 @@
+class OptionNotFound < StandardError
+end

@@ -1,0 +1,7 @@
+#!/usr/bin/ruby
+
+require 'openvpn-http-hooks'
+
+connection = Api::Disconnect.new
+connection.invoke
+

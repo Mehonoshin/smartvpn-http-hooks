@@ -1,0 +1,8 @@
+#!/usr/bin/ruby
+
+require 'openvpn-http-hooks'
+
+api_adapter_class = Api::Authentication
+
+authenticator = OpenvpnPasswordAuthenticator.new(ARGV, api_adapter_class)
+authenticator.authenticate
