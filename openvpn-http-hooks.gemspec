@@ -9,8 +9,10 @@ Gem::Specification.new do |s|
   s.files       = `git ls-files`.split($/)
   s.homepage    = 'https://smartvpn.biz'
   s.executables = ['openvpn-activate', 'openvpn-authenticate', 'openvpn-connect', 'openvpn-disconnect']
-
+  s.license       = 'MIT'
+  s.require_path = 'lib'
   s.add_development_dependency 'rspec', ['>= 0']
   s.add_development_dependency 'mocha'
   s.add_development_dependency 'webmock'
+
 end

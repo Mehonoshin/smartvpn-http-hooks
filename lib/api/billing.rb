@@ -5,11 +5,12 @@ require File.expand_path('../../signer', __FILE__)
 
 module Api
   class Billing
-    API_HOST = "api.smartvpn.biz"
-    KEY_PATH = "/etc/openvpn/auth_key"
+    API_HOST = '/etc/openvpn/API_HOST'
+    KEY_PATH = '/etc/openvpn/auth_key'
 
     def host_with_port
-      "http://#{API_HOST}"
+      host =  File.read(API_HOST)
+      "http://#{host.strip}"
     end
 
     def auth_key
