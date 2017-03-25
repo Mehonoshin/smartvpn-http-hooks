@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    openvpn-http-hooks (1.0.4)
+    openvpn-http-hooks (1.0.6)
 
 GEM
   remote: https://rubygems.org/
@@ -34,3 +34,6 @@ DEPENDENCIES
   openvpn-http-hooks!
   rspec
   webmock
+
+BUNDLED WITH
+   1.11.0
