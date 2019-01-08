@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 
-require 'openvpn-http-hooks'
+require 'smartvpn-http-hooks'
 
 connection = Api::Disconnect.new
 connection.invoke

@@ -1,4 +1,4 @@
-#### openvpn-http-hooks
+# smartvpn-http-hooks
 
 This ruby gem is wrapper for OpenVPN server daemon.
 

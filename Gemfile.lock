@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    openvpn-http-hooks (1.0.6)
+    smartvpn-http-hooks (1.0.7)
 
 GEM
   remote: https://rubygems.org/
@@ -31,9 +31,9 @@ PLATFORMS
 
 DEPENDENCIES
   mocha
-  openvpn-http-hooks!
   rspec
+  smartvpn-http-hooks!
   webmock
 
 BUNDLED WITH
-   1.11.0
+   1.17.1
