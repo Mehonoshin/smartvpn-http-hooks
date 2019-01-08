@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'openvpn-http-hooks'
-  s.version     = '1.0.6'
-  s.date        = '2014-04-27'
+  s.version     = '1.0.7'
+  s.date        = '2019-01-08'
   s.summary     = "HTTP hooks for OpenVPN server"
   s.description = "Trigger on openvpn events and notify HTTP API"
   s.authors     = ["Stanislav Mekhonoshin"]
