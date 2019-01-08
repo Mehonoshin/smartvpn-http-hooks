@@ -5,14 +5,14 @@ describe Option::I2p do
 
   describe '.activate' do
     it 'adds firewall rules' do
-      subject.expects(:add_firewall_routes)
+      expect(subject).to receive(:add_firewall_routes)
       subject.activate!
     end
   end
 
   describe '.deactivate' do
     it 'removes firewall rules' do
-      subject.expects(:remove_firewall_routes)
+      expect(subject).to receive(:remove_firewall_routes)
       subject.deactivate!
     end
   end

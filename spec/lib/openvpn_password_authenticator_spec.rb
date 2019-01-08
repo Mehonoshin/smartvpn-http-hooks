@@ -16,26 +16,26 @@ describe OpenvpnPasswordAuthenticator do
 
   describe ".new" do
     it "read file with credentials" do
-      File.expects(:read).with(path_to_file).returns(file_content)
+      expect(File).to receive(:read).with(path_to_file).and_return(file_content)
       subject
     end
 
     it "creates new adapter instance with credentials" do
-      api_adapter_class.expects(:new).with('login', 'password')
+      expect(api_adapter_class).to receive(:new).with('login', 'password')
       subject
     end
   end
 
   describe ".authenticate" do
     before do
-      subject.api.stubs(:valid_credentials?).returns(validation_result)
+      allow(subject.api).to receive(:valid_credentials?).and_return(validation_result)
     end
 
     context "credentials valid" do
       let(:validation_result) { true }
 
       it "exits with 0 code" do
-        subject.expects(:exit).with(0)
+        expect(subject).to receive(:exit).with(0)
         subject.authenticate
       end
     end
@@ -44,7 +44,7 @@ describe OpenvpnPasswordAuthenticator do
       let(:validation_result) { false }
 
       it "exits with 1 code" do
-        subject.expects(:exit).with(1)
+        expect(subject).to receive(:exit).with(1)
         subject.authenticate
       end
     end

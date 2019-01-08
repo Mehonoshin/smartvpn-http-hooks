@@ -5,15 +5,15 @@ describe System::OpenvpnStatusLogReader do
   let(:common_name) { "e0c187715fa9e1bb9fd96882dfa7af22" }
   let(:path_to_log) { described_class::LOGFILE_PATH }
 
-  before { File.stubs(:read).with(path_to_log).returns(file_contents) }
+  before { allow(File).to receive(:read).with(path_to_log).and_return(file_contents) }
 
   describe '.vpn_ip' do
     subject { described_class }
 
     it 'creates new instance and vpn_ip_for on it' do
-      object = mock()
-      object.expects(:vpn_ip_for).with(common_name)
-      subject.expects(:new).returns(object)
+      object = double()
+      expect(object).to receive(:vpn_ip_for).with(common_name)
+      expect(subject).to receive(:new).and_return(object)
       subject.vpn_ip(common_name)
     end
   end

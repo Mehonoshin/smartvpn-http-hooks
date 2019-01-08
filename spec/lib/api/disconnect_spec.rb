@@ -5,21 +5,21 @@ describe Api::Disconnect do
 
   describe '#invoke' do
     before do
-      subject.stubs(:response).returns(
+      allow(subject).to receive(:response).and_return(
         JSON.parse(
           '{"id":101,"common_name":"login","options":["i2p", "proxy"],"option_attributes":{"i2p":{"attr1": "value1"},"proxy":{"attr2": "value2"}}}'
         )
       )
-      subject.stubs(:trigger_script_return)
-      subject.stubs(:success_api_call?).returns(api_call_validation_result)
+      allow(subject).to receive(:trigger_script_return)
+      allow(subject).to receive(:success_api_call?).and_return(api_call_validation_result)
     end
 
     context 'successfull script call' do
       let(:api_call_validation_result) { true }
 
-      it 'activates options' do
-        Option::I2p.any_instance.expects(:deactivate!)
-        Option::Proxy.any_instance.expects(:deactivate!)
+      it 'deactivates options' do
+        allow_any_instance_of(Option::I2p).to receive(:deactivate!)
+        allow_any_instance_of(Option::Proxy).to receive(:deactivate!)
         subject.invoke
       end
     end
@@ -28,7 +28,7 @@ describe Api::Disconnect do
       let(:api_call_validation_result) { false }
 
       it 'does not activate options' do
-        Option::I2p.any_instance.expects(:deactivate!).never
+        expect(Option::I2p).to receive(:deactivate!).never
         subject.invoke
       end
     end

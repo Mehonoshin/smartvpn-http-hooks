@@ -14,5 +14,4 @@ class OpenvpnPasswordAuthenticator
       exit 1
     end
   end
-
 end

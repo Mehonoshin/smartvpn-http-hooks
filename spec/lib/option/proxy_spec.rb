@@ -11,8 +11,8 @@ describe Option::Proxy do
     end
 
     it 'it starts proxy daemon and firewall rules' do
-      subject.expects(:start_proxy_daemon).returns(9090)
-      subject.expects(:add_firewall_rules).with(9090)
+      expect(subject).to receive(:start_proxy_daemon).and_return(9090)
+      expect(subject).to receive(:add_firewall_rules).with(9090)
       subject.activate!
     end
   end
@@ -23,9 +23,12 @@ describe Option::Proxy do
     end
 
     it 'stops daemon, removes firewall rule and cleans relays list' do
-      Option::Proxy::RelayManager.any_instance.stubs(:free).with(anything).returns(9090)
-      subject.expects(:remove_firewall_rules).with(9090)
-      subject.expects(:kill_proxy_daemon).with(9090)
+      allow_any_instance_of(Option::Proxy::RelayManager)
+        .to receive(:free)
+        .with(anything)
+        .and_return(9090)
+      expect(subject).to receive(:remove_firewall_rules).with(9090)
+      expect(subject).to receive(:kill_proxy_daemon).with(9090)
       subject.deactivate!
     end
   end

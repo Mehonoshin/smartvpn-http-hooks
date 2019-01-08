@@ -5,7 +5,7 @@ describe System::OpenvpnStatusLogParser do
     subject { described_class }
 
     it 'calls parse method' do
-      subject.any_instance.expects(:parse)
+      expect_any_instance_of(subject).to receive(:parse)
       subject.new("")
     end
   end

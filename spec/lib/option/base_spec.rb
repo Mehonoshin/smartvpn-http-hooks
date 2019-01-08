@@ -7,20 +7,19 @@ describe Option::Base do
 
   describe 'activate' do
     it 'creates instance of class and calls activate! on it' do
-      object = mock()
-      object.expects(:activate!)
-      subject.expects(:new).with(common_name, attributes).returns(object)
+      object = double()
+      expect(object).to receive(:activate!)
+      expect(subject).to receive(:new).with(common_name, attributes).and_return(object)
       subject.activate(common_name, attributes)
     end
   end
 
   describe 'deactivate' do
     it 'creates instance of class and calls deactivate! on it' do
-      object = mock()
-      object.expects(:deactivate!)
-      subject.expects(:new).with(common_name, attributes).returns(object)
+      object = double()
+      expect(object).to receive(:deactivate!)
+      expect(subject).to receive(:new).with(common_name, attributes).and_return(object)
       subject.deactivate(common_name, attributes)
     end
   end
-
 end

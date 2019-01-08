@@ -11,7 +11,6 @@ Gem::Specification.new do |s|
   s.executables = ['smartvpn-activate', 'smartvpn-authenticate', 'smartvpn-connect', 'smartvpn-disconnect']
   s.license       = 'MIT'
   s.require_path = 'lib'
-  s.add_development_dependency 'rspec', ['>= 0']
-  s.add_development_dependency 'mocha'
+  s.add_development_dependency 'rspec', ['>= 3.8']
   s.add_development_dependency 'webmock'
 end

@@ -5,8 +5,8 @@ describe Api::Connection do
 
   describe '.invoke_if_valid_api_call' do
     before do
-      subject.stubs(:success_api_call?).returns(success_status)
-      subject.expects(:exit).with(exit_status)
+      allow(subject).to receive(:success_api_call?).and_return(success_status)
+      expect(subject).to receive(:exit).with(exit_status)
     end
 
     context 'success' do
@@ -33,7 +33,7 @@ describe Api::Connection do
     let(:common_name) { "login" }
 
     before do
-      subject.stubs(:response).returns(
+      allow(subject).to receive(:response).and_return(
         JSON.parse(
           "{\"id\":101,\"common_name\":\"#{common_name}\",\"options\":[\"#{option_name}\", \"proxy\"],\"option_attributes\":{\"i2p\":{\"attr1\": \"value1\"},\"proxy\":{\"attr2\": \"value2\"}}}"
         )

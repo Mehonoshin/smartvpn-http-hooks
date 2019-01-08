@@ -3,9 +3,11 @@ require 'spec_helper'
 describe Api::Authentication do
   subject { described_class.new('login', 'password') }
 
+  api_host_defined
+
   describe '.valid_credentials?' do
     before do
-      subject.stubs(:auth_key).returns('key')
+      allow(subject).to receive(:auth_key).and_return('key')
       stub_request(:post, 'api.smartvpn.biz/api/auth').
         to_return(status: status)
     end
@@ -14,7 +16,7 @@ describe Api::Authentication do
       let(:status) { 200 }
 
       it 'returns true' do
-        expect(subject.valid_credentials?).to be_true
+        expect(subject.valid_credentials?).to be true
       end
     end
 
@@ -22,7 +24,7 @@ describe Api::Authentication do
       let(:status) { 404 }
 
       it 'returns false' do
-        expect(subject.valid_credentials?).to be_false
+        expect(subject.valid_credentials?).to be false
       end
     end
   end

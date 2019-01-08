@@ -3,33 +3,35 @@ require 'spec_helper'
 describe Api::Billing do
   subject { described_class.new }
 
+  api_host_defined
+
   it "returns api url" do
     expect(subject.host_with_port).to include "http://"
   end
 
   it "reads file with auth key" do
-    File.stubs(:read).with(described_class::KEY_PATH).returns("key")
+    allow(File).to receive(:read).with(described_class::KEY_PATH).and_return("key")
     expect(subject.auth_key).to eq "key"
   end
 
   it "returns machine hostname" do
-    Socket.stubs(:gethostname).returns("hostname.dev")
+    allow(Socket).to receive(:gethostname).and_return("hostname.dev")
     expect(subject.hostname).to eq "hostname.dev"
   end
 
   describe ".success_api_call?" do
-    let(:api_call_result) { mock() }
+    let(:api_call_result) { double() }
 
     before do
-      api_call_result.stubs(:code).returns(code)
-      subject.stubs(:api_call_result).returns(api_call_result)
+      allow(api_call_result).to receive(:code).and_return(code)
+      allow(subject).to receive(:api_call_result).and_return(api_call_result)
     end
 
     context "result is 404" do
       let(:code) { "404" }
 
       it "api call is not successful" do
-        expect(subject.success_api_call?).to be_false
+        expect(subject.success_api_call?).to be false
       end
     end
 
@@ -37,7 +39,7 @@ describe Api::Billing do
       let(:code) { "200" }
 
       it "api call is successful" do
-        expect(subject.success_api_call?).to be_true
+        expect(subject.success_api_call?).to be true
       end
     end
   end
@@ -48,24 +50,24 @@ describe Api::Billing do
     end
 
     it "fetches HTTP response" do
-      subject.stubs(:action).returns("auth")
-      subject.stubs(:data).returns({})
-      subject.stubs(:auth_key).returns("key")
+      allow(subject).to receive(:action).and_return("auth")
+      allow(subject).to receive(:data).and_return({})
+      allow(subject).to receive(:auth_key).and_return("key")
 
       subject.api_call_result
-      expect(subject.success_api_call?).to be_true
+      expect(subject.success_api_call?).to be true
     end
   end
 
   it "returns URI for api call" do
     action = "auth"
-    subject.stubs(:action).returns(action)
-    expect(subject.uri).to eq URI("http://#{described_class::API_HOST}/api/#{action}")
+    allow(subject).to receive(:action).and_return(action)
+    expect(subject.uri).to eq URI("#{subject.host_with_port}/api/#{action}")
   end
 
   it "adds signature to params hash" do
-    subject.stubs(:auth_key).returns("key")
-    subject.stubs(:data).returns({})
+    allow(subject).to receive(:auth_key).and_return("key")
+    allow(subject).to receive(:data).and_return({})
     expect(subject.signed_data).not_to be_empty
   end
 end

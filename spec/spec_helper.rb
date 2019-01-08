@@ -1,9 +1,12 @@
-require 'rspec/autorun'
+require 'rubygems' unless defined?(Gem)
+require 'bundler/setup'
+Bundler.require(:default)
+
 require 'webmock/rspec'
 require 'smartvpn-http-hooks'
+require 'support/mocks'
 
 RSpec.configure do |config|
-  config.mock_with :mocha
+  config.mock_with :rspec
+  config.extend Smartvpn::Mocks
 end
-
-
