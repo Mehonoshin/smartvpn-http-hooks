@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Mehonoshin/smartvpn-http-hooks.svg?branch=master)](https://travis-ci.org/Mehonoshin/smartvpn-http-hooks)
+
 # smartvpn-http-hooks
 
 This ruby gem is wrapper for OpenVPN server daemon.
