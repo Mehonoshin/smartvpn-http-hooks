@@ -4,10 +4,10 @@ Gem::Specification.new do |s|
   s.date        = '2014-04-27'
   s.summary     = "HTTP hooks for OpenVPN server"
   s.description = "Trigger on openvpn events and notify HTTP API"
-  s.authors     = ["Victor Ivanov"]
-  s.email       = 'admin@smartvpn.biz'
+  s.authors     = ["Stanislav Mekhonoshin"]
+  s.email       = 'ejabberd@gmail.com'
   s.files       = `git ls-files`.split($/)
-  s.homepage    = 'https://smartvpn.biz'
+  s.homepage    = 'https://github.com/Mehonoshin/openvpn-http-hooks'
   s.executables = ['openvpn-activate', 'openvpn-authenticate', 'openvpn-connect', 'openvpn-disconnect']
   s.license       = 'MIT'
   s.require_path = 'lib'
