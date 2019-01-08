@@ -8,6 +8,15 @@ describe Api::Activation do
   describe '.activate' do
     context 'when node is already activated' do
       before do
+        expect(File)
+          .to receive(:exist?)
+          .with('/etc/openvpn/auth_key')
+          .and_return(true)
+      end
+
+      it 'does not make http calls' do
+        expect(subject).not_to receive(:activated_successfully?)
+        subject.activate
       end
     end
 

@@ -9,7 +9,7 @@ module Api
     KEY_PATH = '/etc/openvpn/auth_key'
 
     def host_with_port
-      host =  File.read(API_HOST)
+      host = File.read(API_HOST)
       "http://#{host.strip}"
     end
 
