@@ -25,8 +25,8 @@ describe Api::Activation do
         stub_request(:post, 'api.smartvpn.biz/api/activate')
           .with(body: {
             hostname:   ENV['HOSTNAME'],
-            server_ca:  'crt content',
-            client_ca:  'client crt content',
+            server_crt: 'crt content',
+            client_crt: 'client crt content',
             client_key: 'client key content'
           }
         )

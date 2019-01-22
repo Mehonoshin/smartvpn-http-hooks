@@ -44,17 +44,17 @@ module Api
         # instead of relying on node IP
         # secret_key: ENV['SECRET_KEY'],
         hostname:   hostname,
-        server_ca:  server_ca,
-        client_ca:  client_ca,
+        server_crt:  server_crt,
+        client_crt:  client_crt,
         client_key: client_key
       }
     end
 
-    def server_ca
+    def server_crt
       read_pki('ca.crt')
     end
 
-    def client_ca
+    def client_crt
       read_pki('generic_client.crt')
     end
 
