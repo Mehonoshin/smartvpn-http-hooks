@@ -2,6 +2,7 @@ require 'rubygems' unless defined?(Gem)
 require 'bundler/setup'
 Bundler.require(:default)
 
+require 'dotenv/load'
 require 'webmock/rspec'
 require 'smartvpn-http-hooks'
 require 'support/mocks'

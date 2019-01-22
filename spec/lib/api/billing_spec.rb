@@ -3,23 +3,20 @@ require 'spec_helper'
 describe Api::Billing do
   subject { described_class.new }
 
-  api_host_defined
-
-  it "returns api url" do
-    expect(subject.host_with_port).to include "http://"
+  it 'returns api url' do
+    expect(subject.host_with_port).to include 'http://'
   end
 
-  it "reads file with auth key" do
-    allow(File).to receive(:read).with(described_class::KEY_PATH).and_return("key")
-    expect(subject.auth_key).to eq "key"
+  it 'reads file with auth key' do
+    allow(File).to receive(:read).with(described_class::KEY_PATH).and_return('key')
+    expect(subject.auth_key).to eq 'key'
   end
 
-  it "returns machine hostname" do
-    allow(Socket).to receive(:gethostname).and_return("hostname.dev")
-    expect(subject.hostname).to eq "hostname.dev"
+  it 'returns machine hostname' do
+    expect(subject.hostname).to eq 'test.smartvpn.biz'
   end
 
-  describe ".success_api_call?" do
+  describe '.success_api_call?' do
     let(:api_call_result) { double() }
 
     before do

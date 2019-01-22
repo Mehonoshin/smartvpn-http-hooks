@@ -5,11 +5,10 @@ require File.expand_path('../../signer', __FILE__)
 
 module Api
   class Billing
-    API_HOST = '/etc/openvpn/API_HOST'
     KEY_PATH = '/etc/openvpn/auth_key'
 
     def host_with_port
-      host = File.read(API_HOST)
+      host = ENV['API_HOST']
       "http://#{host.strip}"
     end
 
@@ -18,7 +17,7 @@ module Api
     end
 
     def hostname
-      Socket.gethostname
+      ENV['HOSTNAME']
     end
 
     def success_api_call?

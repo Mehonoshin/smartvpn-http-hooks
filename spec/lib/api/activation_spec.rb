@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Api::Activation do
   subject { described_class.new }
 
-  api_host_defined
-
   describe '.activate' do
+    mock_pki_files
+
     context 'when node is already activated' do
       before do
         expect(File)
@@ -23,6 +23,13 @@ describe Api::Activation do
     context 'successful activation' do
       before do
         stub_request(:post, 'api.smartvpn.biz/api/activate')
+          .with(body: {
+            hostname:   ENV['HOSTNAME'],
+            server_ca:  'crt content',
+            client_ca:  'client crt content',
+            client_key: 'client key content'
+          }
+        )
       end
 
       it 'saves key' do

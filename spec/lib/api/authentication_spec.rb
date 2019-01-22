@@ -3,8 +3,6 @@ require 'spec_helper'
 describe Api::Authentication do
   subject { described_class.new('login', 'password') }
 
-  api_host_defined
-
   describe '.valid_credentials?' do
     before do
       allow(subject).to receive(:auth_key).and_return('key')
