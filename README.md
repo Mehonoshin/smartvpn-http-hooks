@@ -10,10 +10,12 @@ The main purpose of this gem - is to interact with remote API, located at billin
 
 This allows to authenticate user, track his connects/disconnects, apply hooks on connect/disconnect.
 
-### Hooks
+## Installation
 
-Built-in hooks allow to implement following features for specific user:
+It is assumed, that the gem is installed directly to VPS/docker image with OpenVPN server. So the preferred solution is to install it directly to the system, without `bundler` tool usage.
 
-* Automatic routing of I2P sites through I2P router
-* Automatic routing of TOR sites through TOR router
-* Applying selected proxy for all HTTP traffic of specific user
+`gem install smartvpn-http-hooks`
+
+## Usage
+
+TBD
