@@ -24,10 +24,11 @@ describe Api::Activation do
       before do
         stub_request(:post, 'api.smartvpn.biz/api/activate')
           .with(body: {
-            hostname:   ENV['HOSTNAME'],
-            server_crt: 'crt content',
-            client_crt: 'client crt content',
-            client_key: 'client key content'
+            secret_token: ENV['SECRET_TOKEN'],
+            hostname:     ENV['HOSTNAME'],
+            server_crt:   'crt content',
+            client_crt:   'client crt content',
+            client_key:   'client key content'
           }
         )
       end

@@ -40,13 +40,11 @@ module Api
 
     def data
       {
-        # TODO: we should subscribe initial activation with secret key
-        # instead of relying on node IP
-        # secret_key: ENV['SECRET_KEY'],
-        hostname:   hostname,
-        server_crt:  server_crt,
-        client_crt:  client_crt,
-        client_key: client_key
+        secret_token: secret_token,
+        hostname:     hostname,
+        server_crt:   server_crt,
+        client_crt:   client_crt,
+        client_key:   client_key
       }
     end
 
@@ -64,6 +62,10 @@ module Api
 
     def action
       "activate"
+    end
+
+    def secret_token
+      ENV['SECRET_TOKEN']
     end
 
     def read_pki(file)

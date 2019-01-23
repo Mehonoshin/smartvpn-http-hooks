@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    smartvpn-http-hooks (1.0.8)
+    smartvpn-http-hooks (1.0.9)
 
 GEM
   remote: https://rubygems.org/
