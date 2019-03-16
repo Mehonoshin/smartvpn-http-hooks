@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/Mehonoshin/smartvpn-http-hooks.svg?branch=master)](https://travis-ci.org/Mehonoshin/smartvpn-http-hooks)
+[![Inline docs](http://inch-ci.org/github/Mehonoshin/smartvpn-http-hooks.svg?branch=master)](http://inch-ci.org/github/Mehonoshin/smartvpn-http-hooks)
+
 
 # smartvpn-http-hooks
 
